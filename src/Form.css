@@ -1,0 +1,4 @@
+.submit-button {
+    /* This important not the best solution but Radix was not helping, probable need a reset.css or a more standard in button sizing */
+    width: 100% !important; 
+}
