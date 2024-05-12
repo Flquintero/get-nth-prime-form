@@ -5,7 +5,6 @@ import "./Form.css";
 import { getNthPrime } from "nth-prime-retriever";
 
 const CForm = () => {
-  const positionMemoryLimit = 1000000;
   const [nthPosition, setNthPosition] = useState<number | undefined>();
   const [nthNumber, setNthNumber] = useState<number | null>();
   const [hasError, setHasError] = useState<boolean>(false);
@@ -17,16 +16,12 @@ const CForm = () => {
     if (nthNumber) setNthNumber(null);
     if (hasError) setHasError(false);
   };
-  const checkForMemoryLimit = (): void => {
-    if ((nthPosition as number) > positionMemoryLimit) setHasError(true);
-  };
   const handleSetNthNumber = (): void => {
     try {
-      checkForMemoryLimit();
       const nthPrime = getNthPrime(nthPosition as number);
       setNthNumber(nthPrime);
     } catch (error: any) {
-      setHasError(true);
+      setHasError(true); // To do: Include actual error message from package
     }
   };
   return (
@@ -74,7 +69,7 @@ const CForm = () => {
       {hasError && (
         <Callout.Root color="tomato">
           <Callout.Text>
-            So sorry but for now the Nth Position limit is {positionMemoryLimit}
+            So sorry but for now the Nth Position limit is 1000000
           </Callout.Text>
         </Callout.Root>
       )}
