@@ -5,9 +5,14 @@ import "./Form.css";
 import { getNthPrime } from "nth-prime-retriever";
 
 const CForm = () => {
-  const [nthPosition, setNthPosition] = useState<number | undefined>();
+  const [nthPosition, setNthPosition] = useState<number | null>();
   const [nthNumber, setNthNumber] = useState<number | null>();
   const [hasError, setHasError] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const isNthPositionEmpty = [undefined, null, NaN].includes(
+    nthPosition as null | undefined
+  );
+  const isButtonDisabled = isNthPositionEmpty || isLoading;
   const handleSetNthPositon = (nthPosition: number): void => {
     resetForm();
     setNthPosition(nthPosition);
@@ -18,10 +23,14 @@ const CForm = () => {
   };
   const handleSetNthNumber = (): void => {
     try {
+      // To Do: Finish implement loading, could need extra change sin package, for higher numbers
+      setIsLoading(true);
       const nthPrime = getNthPrime(nthPosition as number);
       setNthNumber(nthPrime);
     } catch (error: any) {
       setHasError(true); // To do: Include actual error message from package
+    } finally {
+      setIsLoading(false);
     }
   };
   return (
@@ -51,7 +60,8 @@ const CForm = () => {
       <Form.Submit asChild>
         <Button
           className="submit-button"
-          disabled={!nthPosition}
+          disabled={isButtonDisabled}
+          loading={isLoading}
           type="submit"
           size="3"
           my="3"
