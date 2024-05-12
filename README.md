@@ -5,6 +5,10 @@ This project was created to be able to test the nth-prime-retriever npm package:
 Npm package: https://www.npmjs.com/package/nth-prime-retriever  
 Github repo: https://github.com/Flquintero/bhe-code-exercise
 
+## Live Demo
+
+Live Demo: https://get-nth-prime-form.vercel.app/
+
 ## To install packages
 
 After cloning make sure to run
