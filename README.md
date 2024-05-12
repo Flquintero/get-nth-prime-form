@@ -1,13 +1,15 @@
 # Retrieving the number for nth position of a list of primes
 
-This project was created to be able to test the nth-prime-retriever package:
+This project was created to be able to test the nth-prime-retriever npm package:
 
-[npm package:](https://www.npmjs.com/package/nth-prime-retriever).
-[Github repo] (https://github.com/Flquintero/bhe-code-exercise)
+Npm package: (https://www.npmjs.com/package/nth-prime-retriever)\
+Github repo: (https://github.com/Flquintero/bhe-code-exercise)
 
 ## To install packages
 
-After cloning make sure to run ### `npm install`
+After cloning make sure to run
+
+### `npm install`
 
 ## Available Scripts
 
