@@ -23,12 +23,12 @@ const CForm = () => {
   };
   const handleSetNthNumber = (): void => {
     try {
-      // To Do: Finish implement loading, could need extra change sin package, for higher numbers
+      // To Do: Finish implement loading, could need extra changes in package, for higher numbers
       setIsLoading(true);
       const nthPrime = getNthPrime(nthPosition as number);
       setNthNumber(nthPrime);
     } catch (error: any) {
-      setErrorMessage(error.message); // To do: Include actual error message from package
+      setErrorMessage(error.message);
     } finally {
       setIsLoading(false);
     }
