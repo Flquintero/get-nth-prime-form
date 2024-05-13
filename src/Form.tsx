@@ -7,7 +7,7 @@ import { getNthPrime } from "nth-prime-retriever";
 const CForm = () => {
   const [nthPosition, setNthPosition] = useState<number | null>();
   const [nthNumber, setNthNumber] = useState<number | null>();
-  const [hasError, setHasError] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const isNthPositionEmpty = [undefined, null, NaN].includes(
     nthPosition as null | undefined
@@ -19,7 +19,7 @@ const CForm = () => {
   };
   const resetForm = (): void => {
     if (nthNumber) setNthNumber(null);
-    if (hasError) setHasError(false);
+    if (errorMessage) setErrorMessage(null);
   };
   const handleSetNthNumber = (): void => {
     try {
@@ -28,7 +28,7 @@ const CForm = () => {
       const nthPrime = getNthPrime(nthPosition as number);
       setNthNumber(nthPrime);
     } catch (error: any) {
-      setHasError(true); // To do: Include actual error message from package
+      setErrorMessage(error.message); // To do: Include actual error message from package
     } finally {
       setIsLoading(false);
     }
@@ -76,11 +76,9 @@ const CForm = () => {
           </Callout.Text>
         </Callout.Root>
       )}
-      {hasError && (
+      {errorMessage && (
         <Callout.Root color="tomato">
-          <Callout.Text>
-            So sorry but for now the Nth Position limit is 1000000
-          </Callout.Text>
+          <Callout.Text>{errorMessage}</Callout.Text>
         </Callout.Root>
       )}
     </Form.Root>
